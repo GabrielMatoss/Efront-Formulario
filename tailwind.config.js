@@ -10,14 +10,12 @@ export default {
         "Sora": ["Sora", "sans-serif"],
         "Inter": ["Inter", "sans-serif"]
       },
-      textColor: {
-        white: {
-          "primary": "#F9F9F9",
-        },
-      },
       colors: {
         green: {
           "primary": "#04D361",
+        },
+        white: {
+          "primary": "#F9F9F9",
         },
         dark: {
           "primary": "#0C0C0C",
