@@ -1,9 +1,19 @@
+import eFrontLogo from "./assets/eFront.svg";
+
 export function App() {
   return (
-    <main className="flex max-w-7xl h-screen  mx-auto justify-center items-center">
-      <h1 className="text-7xl font-Inter bg-green-primary rounded p-2">
-        Olá mundo
-      </h1>
+    <main className=" max-w-7xl mx-auto">
+      <header className="pt-8 px-2 flex items-center justify-between">
+        <img src={eFrontLogo} alt="" />
+
+        <button
+          type="button"
+          className="font-sans text-sm font-bold py-4 px-6 border border-green-primary rounded-md uppercase
+          text-white-primary"
+        >
+          comprar ebook
+        </button>
+      </header>
     </main>
   );
 }

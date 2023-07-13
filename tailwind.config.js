@@ -6,12 +6,17 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily:{
+      fontFamily: {
         "Sora": ["Sora", "sans-serif"],
         "Inter": ["Inter", "sans-serif"]
       },
+      textColor: {
+        white: {
+          "primary": "#F9F9F9",
+        },
+      },
       colors: {
-        green:{
+        green: {
           "primary": "#04D361",
         },
         dark: {
