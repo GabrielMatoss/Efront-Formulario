@@ -8,10 +8,11 @@
   box-sizing: border-box;
 }
 
+
 body {
   background: linear-gradient(225deg, #1A1A1A 0%, #0A0A0A 100%);
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
