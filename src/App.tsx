@@ -1,6 +1,14 @@
+import { useState } from "react";
 import eFrontLogo from "./assets/eFront.svg";
 
+//Se a gente for fazer num grande estado, poderiamos fazer um objetao, contendo keys e values proprios.
+
 export function App() {
+  const [inputName, setInputName] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
+
+  console.log(inputName);
+  console.log(inputEmail);
   return (
     <div className="max-w-7xl mx-auto pb-4">
       <header className="pt-8 px-2 flex items-center justify-between">
@@ -41,7 +49,10 @@ export function App() {
                 Nome
               </label>
               <input
+                value={inputName}
+                onChange={(e) => setInputName(e.target.value)}
                 type="text"
+                name="name"
                 id="name"
                 className="bg-dark-primary h-8 rounded border border-dark-secondary
                 pl-2 text-gray-primary focus:outline-none focus:border-green-primary"
@@ -57,6 +68,9 @@ export function App() {
                 E-mail
               </label>
               <input
+                value={inputEmail}
+                onChange={(e) => setInputEmail(e.target.value)}
+                name="email"
                 type="email"
                 id="email"
                 className="bg-dark-primary h-8 rounded border border-dark-secondary
@@ -66,8 +80,9 @@ export function App() {
 
             <button
               type="submit"
+              disabled={!inputEmail}
               className="flex items-center justify-center bg-green-primary w-full py-1 font-Inter font-semibold 
-              text-lg text-dark-primary rounded"
+              text-lg text-dark-primary rounded disabled:cursor-not-allowed disabled:opacity-60"
             >
               Enviar
             </button>
