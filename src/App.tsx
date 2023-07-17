@@ -1,14 +1,28 @@
 import { useState } from "react";
 import eFrontLogo from "./assets/eFront.svg";
 
-//Se a gente for fazer num grande estado, poderiamos fazer um objetao, contendo keys e values proprios.
-
+interface appFormProps {
+  name: string;
+  email: string;
+}
+//pelo que eu entendi, vamos ter que criar de alguma forma um sistema que armazene as contas criadas,
+// e as verifique e acesse a rota se ja tiver cadastrado ou nao.
 export function App() {
-  const [inputName, setInputName] = useState("");
-  const [inputEmail, setInputEmail] = useState("");
+  const [formState, setFormState] = useState<appFormProps>({
+    name: "",
+    email: "",
+  });
 
-  console.log(inputName);
-  console.log(inputEmail);
+  function handleInput(event: any, key: any) {
+    setFormState((state) => {
+      return { ...state, [key]: event.target.value };
+    });
+  }
+
+  function formEventInput(event: any) {
+    event.preventDefault();
+    console.log(formState);
+  }
   return (
     <div className="max-w-7xl mx-auto pb-4">
       <header className="pt-8 px-2 flex items-center justify-between">
@@ -40,7 +54,7 @@ export function App() {
             Preencha os campos para receber as notícias sobre programação
           </p>
 
-          <form className="mt-8 space-y-7">
+          <form className="mt-8 space-y-7" onSubmit={formEventInput}>
             <div className="flex flex-col">
               <label
                 htmlFor="name"
@@ -49,8 +63,8 @@ export function App() {
                 Nome
               </label>
               <input
-                value={inputName}
-                onChange={(e) => setInputName(e.target.value)}
+                value={formState.name}
+                onChange={(event) => handleInput(event, "name")}
                 type="text"
                 name="name"
                 id="name"
@@ -68,8 +82,8 @@ export function App() {
                 E-mail
               </label>
               <input
-                value={inputEmail}
-                onChange={(e) => setInputEmail(e.target.value)}
+                value={formState.email}
+                onChange={(event) => handleInput(event, "email")}
                 name="email"
                 type="email"
                 id="email"
@@ -80,7 +94,6 @@ export function App() {
 
             <button
               type="submit"
-              disabled={!inputEmail}
               className="flex items-center justify-center bg-green-primary w-full py-1 font-Inter font-semibold 
               text-lg text-dark-primary rounded disabled:cursor-not-allowed disabled:opacity-60"
             >
