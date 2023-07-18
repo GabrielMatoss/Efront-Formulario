@@ -1,8 +1,6 @@
-import { Form } from "./assets/components/Form";
+import { Form } from "./components/Form";
 import eFrontLogo from "./assets/eFront.svg";
 
-//pelo que eu entendi, vamos ter que criar de alguma forma um sistema que armazene as contas criadas,
-// e as verifique e acesse a rota se ja tiver cadastrado ou nao.
 export function App() {
   return (
     <div className="max-w-7xl mx-auto pb-4">

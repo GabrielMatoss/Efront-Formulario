@@ -1,29 +1,29 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 interface appFormProps {
   name: string;
   email: string;
 }
+
 export function Form() {
   const [formState, setFormState] = useState<appFormProps>({
     name: "",
     email: "",
   });
 
-  function handleInput(event: any, key: any) {
+  function handleInput(event: ChangeEvent<HTMLInputElement>, key: string) {
     setFormState((state) => {
       return { ...state, [key]: event.target.value };
     });
+
+    console.log(Object.keys(formState));
   }
 
-  function formEventInput(event: any) {
+  function formEventInput(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     console.log(formState);
-    setFormState({
-      name: "",
-      email: "",
-    });
   }
+
   return (
     <form className="mt-8 space-y-7" onSubmit={formEventInput}>
       <div className="flex flex-col">
@@ -40,7 +40,7 @@ export function Form() {
           name="name"
           id="name"
           className="bg-dark-primary h-8 rounded border border-dark-secondary
-                pl-2 text-gray-primary focus:outline-none focus:border-green-primary"
+          pl-2 text-gray-primary focus:outline-none focus:border-green-primary"
           required
         />
       </div>
@@ -59,14 +59,14 @@ export function Form() {
           type="email"
           id="email"
           className="bg-dark-primary h-8 rounded border border-dark-secondary
-                pl-2 text-gray-primary"
+          pl-2 text-gray-primary"
         />
       </div>
 
       <button
         type="submit"
         className="flex items-center justify-center bg-green-primary w-full py-1 font-Inter font-semibold 
-              text-lg text-dark-primary rounded disabled:cursor-not-allowed disabled:opacity-60"
+        text-lg text-dark-primary rounded disabled:cursor-not-allowed disabled:opacity-60"
       >
         Enviar
       </button>
