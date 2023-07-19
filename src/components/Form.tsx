@@ -1,31 +1,6 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-
-interface appFormProps {
-  name: string;
-  email: string;
-}
-
 export function Form() {
-  const [formState, setFormState] = useState<appFormProps>({
-    name: "",
-    email: "",
-  });
-
-  function handleInput(event: ChangeEvent<HTMLInputElement>, key: string) {
-    setFormState((state) => {
-      return { ...state, [key]: event.target.value };
-    });
-
-    console.log(Object.keys(formState));
-  }
-
-  function formEventInput(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    console.log(formState);
-  }
-
   return (
-    <form className="mt-8 space-y-7" onSubmit={formEventInput}>
+    <form className="mt-8 space-y-7">
       <div className="flex flex-col">
         <label
           htmlFor="name"
@@ -34,10 +9,7 @@ export function Form() {
           Nome
         </label>
         <input
-          value={formState.name}
-          onChange={(event) => handleInput(event, "name")}
           type="text"
-          name="name"
           id="name"
           className="bg-dark-primary h-8 rounded border border-dark-secondary
           pl-2 text-gray-primary focus:outline-none focus:border-green-primary"
@@ -53,9 +25,6 @@ export function Form() {
           E-mail
         </label>
         <input
-          value={formState.email}
-          onChange={(event) => handleInput(event, "email")}
-          name="email"
           type="email"
           id="email"
           className="bg-dark-primary h-8 rounded border border-dark-secondary
