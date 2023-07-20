@@ -1,6 +1,19 @@
+import { useForm } from "react-hook-form";
+
 export function Form() {
+  const { register, handleSubmit, reset } = useForm();
+
+  function handleSubmitData(data: any) {
+    localStorage.setItem("formdata", JSON.stringify(data));
+    console.log(data);
+    reset({
+      name: "",
+      email: "",
+    });
+  }
+
   return (
-    <form className="mt-8 space-y-7">
+    <form onSubmit={handleSubmit(handleSubmitData)} className="mt-8 space-y-7">
       <div className="flex flex-col">
         <label
           htmlFor="name"
@@ -12,8 +25,9 @@ export function Form() {
           type="text"
           id="name"
           className="bg-dark-primary h-8 rounded border border-dark-secondary
-          pl-2 text-gray-primary focus:outline-none focus:border-green-primary"
+          pl-2 text-gray-primary outline-none focus:border-green-primary"
           required
+          {...register("name")}
         />
       </div>
 
@@ -28,7 +42,8 @@ export function Form() {
           type="email"
           id="email"
           className="bg-dark-primary h-8 rounded border border-dark-secondary
-          pl-2 text-gray-primary"
+          pl-2 text-gray-primary outline-none focus:border-green-primary"
+          {...register("email")}
         />
       </div>
 
