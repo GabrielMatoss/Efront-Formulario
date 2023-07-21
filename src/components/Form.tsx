@@ -9,10 +9,10 @@ const formSchema = z.object({
     .nonempty("Digite um e-mail")
     .email("Formato de e-mail inválido"),
 });
-//talvez usar o superRefine.
+
 type FormDataInputs = z.infer<typeof formSchema>;
 
-export function Form() {
+export function Form({ setModalIsOpen }: any) {
   const {
     register,
     handleSubmit,
@@ -29,6 +29,10 @@ export function Form() {
       name: "",
       email: "",
     });
+    setModalIsOpen(() => {
+      let message = "Olá";
+      return message;
+    });
   }
 
   return (
@@ -44,7 +48,7 @@ export function Form() {
           type="text"
           id="name"
           className="bg-dark-primary h-8 rounded border border-dark-secondary
-          pl-2 text-gray-primary outline-none focus:border-green-primary hover:border-green-primary transition-colors "
+          pl-2 text-gray-primary outline-none invalid:bg-slate-400 focus:border-green-primary hover:border-green-primary transition-colors "
           {...register("name")}
         />
         {errors.name && (
