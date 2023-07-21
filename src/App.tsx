@@ -1,9 +1,15 @@
 import { Form } from "./components/Form";
 import eFrontLogo from "./assets/eFront.svg";
+import { useEffect, useState } from "react";
 
 export function App() {
+  const [modalIsOpen, setModalIsOpen] = useState("");
+  useEffect(() => {
+    if (!modalIsOpen) return;
+  }, [modalIsOpen]);
+
   return (
-    <div className="max-w-7xl mx-auto pb-4">
+    <div className="max-w-7xl mx-auto pb-4 ">
       <header className="pt-8 px-2 flex items-center justify-between">
         <img src={eFrontLogo} alt="" />
 
@@ -33,7 +39,7 @@ export function App() {
             Preencha os campos para receber as notícias sobre programação
           </p>
 
-          <Form />
+          <Form setModalIsOpen={setModalIsOpen} />
         </section>
       </main>
     </div>
