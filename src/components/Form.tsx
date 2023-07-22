@@ -12,7 +12,11 @@ const formSchema = z.object({
 
 type FormDataInputs = z.infer<typeof formSchema>;
 
-export function Form({ setModalIsOpen }: any) {
+interface ModalProps {
+  setModalIsOpen: (isOpen: boolean) => void;
+}
+
+export function Form({ setModalIsOpen }: ModalProps) {
   const {
     register,
     handleSubmit,
@@ -29,10 +33,8 @@ export function Form({ setModalIsOpen }: any) {
       name: "",
       email: "",
     });
-    setModalIsOpen(() => {
-      let message = "Olá";
-      return message;
-    });
+
+    setModalIsOpen(true);
   }
 
   return (

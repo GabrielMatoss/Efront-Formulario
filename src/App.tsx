@@ -1,12 +1,9 @@
 import { Form } from "./components/Form";
 import eFrontLogo from "./assets/eFront.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function App() {
-  const [modalIsOpen, setModalIsOpen] = useState("");
-  useEffect(() => {
-    if (!modalIsOpen) return;
-  }, [modalIsOpen]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <div className="max-w-7xl mx-auto pb-4 ">
@@ -42,6 +39,16 @@ export function App() {
           <Form setModalIsOpen={setModalIsOpen} />
         </section>
       </main>
+      {modalIsOpen ? (
+        <div className="bg-dark-primary opacity-30">
+          <div className="bg-slate-400">
+            <p>E-mail cadastrado com sucesso!</p>
+            <button onClick={() => setModalIsOpen(false)}>Fechar</button>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
