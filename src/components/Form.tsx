@@ -3,11 +3,16 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
-  name: z.string().nonempty("Digite um nome"),
+  name: z
+    .string()
+    .nonempty("Digite um nome")
+    .max(30, "Digite um nome com no máximo 20 caracteres"),
   email: z
     .string()
+    .max(35, "Digite um e-mail com no máximo 20 caracteres")
     .nonempty("Digite um e-mail")
-    .email("Formato de e-mail inválido"),
+    .email("Formato de e-mail inválido")
+    .endsWith(".com", "O e-mail deve terminar com .com"),
 });
 
 type FormDataInputs = z.infer<typeof formSchema>;
@@ -47,8 +52,9 @@ export function Form({ setModalIsOpen }: ModalProps) {
         <input
           type="text"
           id="name"
-          className="h-8 rounded border border-dark-secondary bg-dark-primary
-          pl-2 text-gray-primary outline-none transition-colors invalid:bg-slate-400 hover:border-green-primary focus:border-green-primary "
+          autoComplete="off"
+          className="h-8 rounded border border-dark-secondary bg-dark-primary pl-2 text-gray-primary
+          outline-none transition-colors hover:border-green-primary focus:border-green-primary"
           {...register("name")}
         />
         {errors.name && (
@@ -66,6 +72,7 @@ export function Form({ setModalIsOpen }: ModalProps) {
         <input
           type="email"
           id="email"
+          autoComplete="off"
           className="h-8 rounded border border-dark-secondary bg-dark-primary
           pl-2 text-gray-primary outline-none transition-colors hover:border-green-primary focus:border-green-primary"
           {...register("email")}
@@ -77,8 +84,8 @@ export function Form({ setModalIsOpen }: ModalProps) {
 
       <button
         type="submit"
-        className="flex w-full items-center justify-center rounded bg-green-primary py-1 font-Inter 
-        text-lg font-semibold text-dark-primary transition-colors hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex w-full items-center justify-center overflow-hidden rounded bg-green-primary py-1 
+        font-Inter text-lg font-semibold text-dark-primary transition-colors hover:opacity-80"
       >
         Enviar
       </button>
