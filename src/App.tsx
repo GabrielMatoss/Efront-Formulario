@@ -15,7 +15,7 @@ export function App() {
           target="_blank"
           type="button"
           className="rounded-md border-2 border-green-primary px-4 py-3 font-sans text-sm font-bold 
-          uppercase text-white-primary transition-colors hover:border-opacity-70 hover:text-opacity-75 max-viewportCel:p-3 max-viewportCel:text-xs"
+          uppercase text-white-primary transition-opacity hover:border-opacity-75 hover:text-opacity-75 max-viewportCel:p-3 max-viewportCel:text-xs"
         >
           comprar ebook
         </a>
@@ -56,7 +56,7 @@ export function App() {
             </p>
             <button
               className="h-10 w-full rounded bg-green-primary text-center font-Inter text-lg 
-              font-semibold text-dark-primary transition-colors hover:opacity-75"
+              font-semibold text-dark-primary transition-opacity hover:opacity-80"
               onClick={() => setModalIsOpen(false)}
             >
               Fechar

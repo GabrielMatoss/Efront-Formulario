@@ -85,7 +85,7 @@ export function Form({ setModalIsOpen }: ModalProps) {
       <button
         type="submit"
         className="flex w-full items-center justify-center overflow-hidden rounded bg-green-primary py-1 
-        font-Inter text-lg font-semibold text-dark-primary transition-colors hover:opacity-80"
+        font-Inter text-lg font-semibold text-dark-primary transition-opacity hover:opacity-80"
       >
         Enviar
       </button>
