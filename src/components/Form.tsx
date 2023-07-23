@@ -12,9 +12,9 @@ const formSchema = z.object({
 
 type FormDataInputs = z.infer<typeof formSchema>;
 
-interface ModalProps {
+type ModalProps = {
   setModalIsOpen: (isOpen: boolean) => void;
-}
+};
 
 export function Form({ setModalIsOpen }: ModalProps) {
   const {
@@ -26,9 +26,7 @@ export function Form({ setModalIsOpen }: ModalProps) {
     resolver: zodResolver(formSchema),
   });
 
-  function handleSubmitData(data: FormDataInputs) {
-    //localStorage.setItem("formdata", JSON.stringify(data));
-    console.log(data);
+  function handleSubmitData() {
     reset({
       name: "",
       email: "",
@@ -42,15 +40,15 @@ export function Form({ setModalIsOpen }: ModalProps) {
       <div className="flex flex-col">
         <label
           htmlFor="name"
-          className="font-Inter font-medium text-sm text-gray-primary"
+          className="font-Inter text-sm font-medium text-gray-primary"
         >
           Nome
         </label>
         <input
           type="text"
           id="name"
-          className="bg-dark-primary h-8 rounded border border-dark-secondary
-          pl-2 text-gray-primary outline-none invalid:bg-slate-400 focus:border-green-primary hover:border-green-primary transition-colors "
+          className="h-8 rounded border border-dark-secondary bg-dark-primary
+          pl-2 text-gray-primary outline-none transition-colors invalid:bg-slate-400 hover:border-green-primary focus:border-green-primary "
           {...register("name")}
         />
         {errors.name && (
@@ -61,15 +59,15 @@ export function Form({ setModalIsOpen }: ModalProps) {
       <div className="flex flex-col">
         <label
           htmlFor="email"
-          className="font-Inter font-medium text-sm text-gray-primary"
+          className="font-Inter text-sm font-medium text-gray-primary"
         >
           E-mail
         </label>
         <input
           type="email"
           id="email"
-          className="bg-dark-primary h-8 rounded border border-dark-secondary
-          pl-2 text-gray-primary outline-none focus:border-green-primary hover:border-green-primary transition-colors"
+          className="h-8 rounded border border-dark-secondary bg-dark-primary
+          pl-2 text-gray-primary outline-none transition-colors hover:border-green-primary focus:border-green-primary"
           {...register("email")}
         />
         {errors.email && (
@@ -79,8 +77,8 @@ export function Form({ setModalIsOpen }: ModalProps) {
 
       <button
         type="submit"
-        className="flex items-center justify-center bg-green-primary w-full py-1 font-Inter font-semibold 
-        text-lg text-dark-primary rounded disabled:cursor-not-allowed disabled:opacity-60 hover:opacity-75 transition-colors"
+        className="flex w-full items-center justify-center rounded bg-green-primary py-1 font-Inter 
+        text-lg font-semibold text-dark-primary transition-colors hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-60"
       >
         Enviar
       </button>
