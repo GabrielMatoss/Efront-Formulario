@@ -1,10 +1,10 @@
-<h1 align="center">eFront Form</h1>
+<h1 aling="left">eFront Form</h1>
 
 - Desafio proposto pelo Iuri Code com o intuito de praticarmos a maioria dos conceitos apresentados durante seu Ebook.
 
 <img src="./.github/efront-form.png">
 
-<h2>Ferramentas ⚙</h2>
+<h2 aling="left">Ferramentas ⚙</h2>
 
 <div aling="left">
 
@@ -20,7 +20,7 @@
 
 </div>
 
-# Como Rodar o projeto
+<h2 aling="left"> Como Rodar o projeto</h2>
 
 Clone o projeto com <code>git clone</code> :
 
@@ -39,5 +39,7 @@ Após isso digite em seu terminal <code>npm run dev</code> para rodar o servidor
 ```
 npm run dev
 ```
+
+---
 
 ### Link do site: https://efront-formulario.vercel.app/
