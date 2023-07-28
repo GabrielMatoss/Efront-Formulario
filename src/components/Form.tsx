@@ -11,7 +11,7 @@ const formSchema = z.object({
     .string()
     .max(35, "Digite um e-mail com no máximo 20 caracteres")
     .nonempty("Digite um e-mail")
-    .email("Formato de e-mail inválido")
+    .email("Formato de e-mail inválido"),
 });
 
 type FormDataInputs = z.infer<typeof formSchema>;
